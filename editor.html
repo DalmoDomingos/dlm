@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLM Editor</title>
+  <meta name="theme-color" content="#07070E">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="ed-header">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-mark">DLM</span>
+    </a>
+
+    <div class="ed-breadcrumb">
+      <span>›</span>
+      <span data-i18n="ed_title">DLM Editor</span>
+    </div>
+
+    <div class="header-spacer"></div>
+
+    <div class="filename-wrap">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M8 1H3a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6L8 1z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 1v5h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <input type="text" id="filenameInput" class="filename-input" value="untitled" spellcheck="false" maxlength="80">
+      <span class="filename-ext">.dlm</span>
+    </div>
+
+    <div class="lang-toggle" style="margin-left:8px">
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+      <button data-lang="pt" onclick="setLang('pt')">PT</button>
+    </div>
+
+    <button class="btn btn-ghost btn-sm" id="newBtn" data-i18n="ed_new" style="margin-left:4px">New file</button>
+  </header>
+
+  <!-- ═══ BODY ═══ -->
+  <div class="ed-body">
+
+    <!-- Canvas -->
+    <div class="ed-canvas">
+      <div class="canvas-bg"></div>
+
+      <!-- Upload state -->
+      <div class="upload-zone" id="uploadZone">
+        <div class="upload-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="4" width="24" height="24" rx="6" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4 22l7-7 5 5 3-3 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 data-i18n="ed_upload_h">Upload your photo</h2>
+        <p data-i18n="ed_upload_sub">Drag & drop or click to choose a JPEG, PNG, or WebP image.</p>
+        <button class="btn btn-primary" id="uploadPhotoBtn" data-i18n="ed_upload_btn">Choose photo</button>
+        <div class="upload-divider" data-i18n="ed_or_open">or open an existing .dlm file</div>
+        <button class="btn btn-secondary" id="openDlmBtn" data-i18n="ed_open_btn">Open .dlm</button>
+      </div>
+
+      <!-- Photo stage -->
+      <div class="photo-stage" id="photoStage">
+        <img id="photoImg" alt="Your photo" draggable="false">
+        <div id="photoOverlay" class="photo-overlay"></div>
+      </div>
+
+      <div class="canvas-hint" id="canvasHint" data-i18n="ed_click_hint">
+        Click on the photo to place a sound
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="ed-sidebar">
+      <!-- Tip -->
+      <div class="sidebar-section">
+        <p style="font-size:12px;color:var(--text-dim);line-height:1.5" data-i18n="ed_tip">
+          Tip: click anywhere on the photo to add a sound pin. Click a pin to select it.
+        </p>
+      </div>
+
+      <!-- Pin list -->
+      <div class="sidebar-section" style="border-bottom:none;padding-bottom:4px">
+        <h3 data-i18n="ed_hotspots">Sound pins</h3>
+      </div>
+
+      <div class="pin-list" id="pinList">
+        <div class="pin-empty" id="pinEmpty" data-i18n="ed_no_pins">
+          No pins yet. Click the photo to add one.
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="sidebar-footer">
+        <button class="btn btn-primary btn-export" id="exportBtn" disabled data-i18n="ed_export">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 2v9M5 8l3 3 3-3M2 13h12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Save as .dlm
+        </button>
+        <a href="viewer.html" class="btn btn-ghost btn-sm" style="justify-content:center" data-i18n="vw_title">Open Viewer</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- ═══ RECORDING OVERLAY ═══ -->
+<div class="rec-overlay" id="recOverlay">
+  <div class="rec-modal">
+    <div class="rec-indicator">
+      <div class="rec-dot"></div>
+    </div>
+    <div class="rec-timer" id="recTimer">00:00</div>
+    <div class="rec-waves">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p class="rec-label" data-i18n="ed_recording">Recording…</p>
+    <button class="btn btn-primary" id="stopRecBtn" data-i18n="ed_stop">Stop</button>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast"></div>
+
+<!-- Hidden file inputs -->
+<input type="file" id="photoFileInput" accept="image/*" style="display:none">
+<input type="file" id="dlmFileInput" accept=".dlm,application/octet-stream,application/json" style="display:none">
+
+<script src="js/i18n.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>

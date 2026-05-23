@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLM — Dynamic Layered Media</title>
+  <meta name="description" content="A new audiovisual format. Place sounds anywhere on your photo.">
+  <meta property="og:title" content="DLM — Dynamic Layered Media">
+  <meta property="og:description" content="Photos that speak. A new audiovisual format.">
+  <meta name="theme-color" content="#07070E">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="logo-mark">DLM</span>
+    <span class="logo-sub">Dynamic Layered Media</span>
+  </a>
+
+  <div class="nav-links">
+    <a href="#how" data-i18n="nav_how">How it works</a>
+    <a href="editor.html" data-i18n="nav_editor">Editor</a>
+    <a href="viewer.html" data-i18n="nav_open">Open .dlm</a>
+  </div>
+
+  <div class="nav-sep"></div>
+
+  <div class="lang-toggle">
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+    <button data-lang="pt" onclick="setLang('pt')">PT</button>
+  </div>
+
+  <a href="editor.html" class="btn btn-primary btn-sm nav-cta" style="margin-left:12px" data-i18n="nav_try">Try Now</a>
+
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <a href="#how" data-i18n="nav_how" onclick="closeMenu()">How it works</a>
+  <a href="editor.html" data-i18n="nav_editor">Editor</a>
+  <a href="viewer.html" data-i18n="nav_open">Open .dlm</a>
+  <div class="lang-toggle" style="margin-top:8px;width:fit-content">
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+    <button data-lang="pt" onclick="setLang('pt')">PT</button>
+  </div>
+  <a href="editor.html" class="btn btn-primary" data-i18n="nav_try">Try Now</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-noise"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow" data-i18n="hero_eyebrow">Introducing DLM</div>
+      <h1 class="hero-h1">
+        <span data-i18n="hero_h1a">Photos that</span><br>
+        <span class="grad-text" data-i18n="hero_h1b">speak.</span>
+      </h1>
+      <p class="hero-sub" data-i18n="hero_sub">
+        A new audiovisual format. Place sounds anywhere on your photo — let people discover them by touch.
+      </p>
+      <div class="hero-actions">
+        <a href="editor.html" class="btn btn-primary" data-i18n="hero_cta">Create your first DLM</a>
+        <a href="viewer.html" class="btn btn-secondary" data-i18n="hero_cta2">Open a .dlm file</a>
+      </div>
+      <div class="hero-social-proof">
+        <div class="proof-dots">
+          <span class="proof-dot" style="background:#FF6B6B"></span>
+          <span class="proof-dot" style="background:#FFD93D"></span>
+          <span class="proof-dot" style="background:#6BCB77"></span>
+          <span class="proof-dot" style="background:#4D96FF"></span>
+        </div>
+        <span class="proof-text">Works on any device. No account needed.</span>
+      </div>
+    </div>
+
+    <!-- Animated demo card -->
+    <div class="hero-demo">
+      <div class="demo-glow"></div>
+      <div class="demo-card">
+        <div class="demo-card-top">
+          <div class="demo-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="demo-badge" data-i18n="demo_badge">Experience it</span>
+        </div>
+        <div class="demo-photo" id="demoPhoto">
+          <!-- Landscape art via CSS -->
+          <div class="demo-sky"></div>
+          <div class="demo-mountains"></div>
+          <div class="demo-trees"></div>
+
+          <!-- Hotspot 1 — top right, idle -->
+          <div class="demo-pin" style="left:72%;top:22%" data-index="0">
+            <div class="pin-ring"></div>
+            <div class="pin-ring pin-ring-2"></div>
+            <div class="pin-core">
+              <svg width="10" height="10" viewBox="0 0 10 10"><path d="M3 2v6M5 1v8M7 3v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="pin-tooltip" data-i18n="demo_label1">Morning birds</div>
+          </div>
+
+          <!-- Hotspot 2 — middle, active/playing -->
+          <div class="demo-pin demo-pin--playing" style="left:38%;top:55%" data-index="1">
+            <div class="pin-ring"></div>
+            <div class="pin-ring pin-ring-2"></div>
+            <div class="pin-core">
+              <svg width="10" height="10" viewBox="0 0 10 10"><path d="M3 2v6M5 1v8M7 3v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="pin-tooltip pin-tooltip--visible" data-i18n="demo_label2">City sounds</div>
+            <div class="pin-wave">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <!-- Hotspot 3 — bottom left, idle -->
+          <div class="demo-pin" style="left:20%;top:75%" data-index="2">
+            <div class="pin-ring"></div>
+            <div class="pin-ring pin-ring-2"></div>
+            <div class="pin-core">
+              <svg width="10" height="10" viewBox="0 0 10 10"><path d="M3 2v6M5 1v8M7 3v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="pin-tooltip" data-i18n="demo_label3">Wind</div>
+          </div>
+        </div>
+        <div class="demo-footer">
+          <span class="demo-filename">golden_hour.dlm</span>
+          <span class="demo-hint" data-i18n="demo_tap">Tap any point</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Process</div>
+      <h2 data-i18n="how_title">How it works</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="4" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 14l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how_s1_t">Upload your photo</h3>
+        <p data-i18n="how_s1_d">Start with any image — JPEG, PNG or WebP. Landscape, portrait, anything.</p>
+      </div>
+
+      <div class="step-connector">
+        <svg viewBox="0 0 80 2" fill="none"><path d="M0 1h80" stroke="url(#g1)" stroke-width="1.5" stroke-dasharray="4 4"/><defs><linearGradient id="g1" x1="0" y1="0" x2="80" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#7C6DFA"/><stop offset="1" stop-color="#FA6D8C"/></linearGradient></defs></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="7" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+            <path d="M9 9l-5-5M19 9l5-5M9 19l-5 5M19 19l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how_s2_t">Place your sounds</h3>
+        <p data-i18n="how_s2_d">Click anywhere on the photo to drop a sound pin. Record live or upload a file.</p>
+      </div>
+
+      <div class="step-connector">
+        <svg viewBox="0 0 80 2" fill="none"><path d="M0 1h80" stroke="url(#g2)" stroke-width="1.5" stroke-dasharray="4 4"/><defs><linearGradient id="g2" x1="0" y1="0" x2="80" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#7C6DFA"/><stop offset="1" stop-color="#FA6D8C"/></linearGradient></defs></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M18 4H10a2 2 0 00-2 2v16a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 20h.01M10 8h8M10 12h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="how_s3_t">Save as .dlm</h3>
+        <p data-i18n="how_s3_d">Export your creation as a .dlm file. Share it, open it again, edit it anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="features">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Features</div>
+      <h2 data-i18n="feat_title">Built for creators</h2>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-card feat-card--wide">
+        <div class="feat-icon feat-icon--accent">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 13v4M8 19h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M9 10a3 3 0 000 0M15 10a3 3 0 010 0" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="12" cy="10" r="6" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat_1_t">Live recording</h3>
+        <p data-i18n="feat_1_d">Capture audio right in the browser. No extra apps needed.</p>
+        <div class="feat-wave">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat_2_t">Upload audio</h3>
+        <p data-i18n="feat_2_d">Add any audio file — MP3, WAV, OGG — to your hotspots.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 7h6M9 11h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat_3_t">Fully responsive</h3>
+        <p data-i18n="feat_3_d">Your .dlm file looks and works perfectly on phones, tablets and desktops.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 2v6h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat_4_t">Your file, your name</h3>
+        <p data-i18n="feat_4_d">Save with any name you choose. The .dlm extension is all it takes.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8.59 13.51l6.83 3.98M15.41 6.51L8.59 10.49" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat_5_t">Instant sharing</h3>
+        <p data-i18n="feat_5_d">Send the file to anyone. They open it here, for free, no account needed.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 data-i18n="feat_6_t">Open format</h3>
+        <p data-i18n="feat_6_d">DLM files are readable JSON. Transparent, future-proof, yours forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-card">
+      <div class="cta-orb"></div>
+      <div class="section-tag">Get started</div>
+      <h2 data-i18n="cta_title">Ready to create?</h2>
+      <p data-i18n="cta_sub">Build your first Dynamic Layered Media file in seconds. No account, no install.</p>
+      <div class="cta-actions">
+        <a href="editor.html" class="btn btn-primary" data-i18n="cta_btn">Open the Editor</a>
+        <a href="viewer.html" class="btn btn-ghost" data-i18n="cta_open">Or open an existing .dlm</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <a href="index.html" class="footer-brand" data-i18n="footer_name">Dynamic Layered Media</a>
+  <div class="footer-creator">
+    <span class="footer-copy">Created by</span>
+    <a href="https://instagram.com/dalmodaniel_" target="_blank" rel="noopener" class="footer-ig">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @dalmodaniel_
+    </a>
+  </div>
+  <span class="footer-copy" data-i18n="footer_copy">© 2026 DLM.</span>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>
