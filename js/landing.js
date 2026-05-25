@@ -27,7 +27,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Load demo DLM and make pins play real audio
+// Load demo DLM and render real pins with audio
 let demoCurrentAudio = null;
 
 async function loadDemoExample() {
@@ -41,10 +41,21 @@ async function loadDemoExample() {
     const img = photo.querySelector('.demo-img');
     if (img) img.src = data.image;
 
-    const pins = photo.querySelectorAll('.demo-pin');
-    pins.forEach((pin, i) => {
-      const hs = data.hotspots[i];
-      if (!hs || !hs.audio) return;
+    (data.hotspots || []).forEach((hs, i) => {
+      if (!hs.audio) return;
+      const pin = document.createElement('div');
+      pin.className = 'demo-pin';
+      pin.style.left = (hs.x * 100) + '%';
+      pin.style.top  = (hs.y * 100) + '%';
+      pin.innerHTML = `
+        <div class="pin-ring"></div>
+        <div class="pin-ring pin-ring-2"></div>
+        <div class="pin-core">
+          <svg width="10" height="10" viewBox="0 0 10 10"><path d="M3 2v6M5 1v8M7 3v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="pin-tooltip">${hs.label || ''}</div>
+        <div class="pin-wave"><span></span><span></span><span></span><span></span><span></span></div>`;
+
       pin.addEventListener('click', () => {
         if (demoCurrentAudio) { demoCurrentAudio.pause(); demoCurrentAudio.currentTime = 0; }
         document.querySelectorAll('.demo-pin--playing').forEach(p => p.classList.remove('demo-pin--playing'));
@@ -54,6 +65,8 @@ async function loadDemoExample() {
         audio.play();
         audio.onended = () => pin.classList.remove('demo-pin--playing');
       });
+
+      photo.appendChild(pin);
     });
   } catch(e) {}
 }
