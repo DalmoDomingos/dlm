@@ -95,6 +95,8 @@ const T = {
     vw_close:     'Close',
     vw_edit:      'Edit in Editor',
     vw_back:      'Open another file',
+    vw_or:        'or',
+    vw_try_example: 'Try an example',
   },
 
   pt: {
@@ -189,6 +191,8 @@ const T = {
     vw_close:     'Fechar',
     vw_edit:      'Editar no Editor',
     vw_back:      'Abrir outro arquivo',
+    vw_or:        'ou',
+    vw_try_example: 'Ver um exemplo',
   }
 };
 

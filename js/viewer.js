@@ -25,6 +25,9 @@ const dlmInput     = document.getElementById('dlmInput');
 
 /* ─── Open file ─── */
 document.getElementById('openBtn').addEventListener('click', () => dlmInput.click());
+document.getElementById('exampleBtn').addEventListener('click', () => {
+  loadDLMFromUrl('examples/tirinhadlm.dlm', 'tirinhadlm');
+});
 dlmInput.addEventListener('change', e => {
   if (e.target.files[0]) loadDLM(e.target.files[0]);
   dlmInput.value = '';
@@ -57,27 +60,41 @@ backBtn.addEventListener('click', showOpenState);
 async function loadDLM(file) {
   try {
     const text = await file.text();
-    const data = JSON.parse(text);
-    if (data.format !== 'DLM') throw new Error('Not a DLM file');
-
-    vState.data = data;
-    stopCurrentAudio();
-
-    // Set photo
-    vwPhoto.src = data.image;
-    vwPhoto.onload = () => {
-      showViewState();
-      renderHotspots();
-
-      // Update bar info
-      const name = data.name || file.name.replace('.dlm', '');
-      vwFilename.innerHTML = escHtml(name) + '<span class="ext">.dlm</span>';
-      const n = (data.hotspots || []).length;
-      vwCount.textContent = n + (n === 1 ? ' pin' : ' pins');
-    };
+    const name = file.name.replace('.dlm', '');
+    parseDLMText(text, name);
   } catch(err) {
     alert('Could not open file. Make sure it is a valid .dlm file.');
   }
+}
+
+async function loadDLMFromUrl(url, name) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Fetch failed');
+    const text = await res.text();
+    parseDLMText(text, name);
+  } catch(err) {
+    alert('Could not load example file.');
+  }
+}
+
+function parseDLMText(text, fallbackName) {
+  const data = JSON.parse(text);
+  if (data.format !== 'DLM') throw new Error('Not a DLM file');
+
+  vState.data = data;
+  stopCurrentAudio();
+
+  vwPhoto.src = data.image;
+  vwPhoto.onload = () => {
+    showViewState();
+    renderHotspots();
+
+    const name = data.name || fallbackName;
+    vwFilename.innerHTML = escHtml(name) + '<span class="ext">.dlm</span>';
+    const n = (data.hotspots || []).length;
+    vwCount.textContent = n + (n === 1 ? ' pin' : ' pins');
+  };
 }
 
 /* ─── Show states ─── */
