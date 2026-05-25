@@ -21,9 +21,9 @@ const T = {
     /* Landing — demo */
     demo_badge:   'Experience it',
     demo_tap:     'Tap any point',
-    demo_label1:  'Morning birds',
-    demo_label2:  'City sounds',
-    demo_label3:  'Wind',
+    demo_label1:  'Knock knock',
+    demo_label2:  'Are you winning, son?',
+    demo_label3:  'son...',
 
     /* Landing — how */
     how_title: 'How it works',
@@ -117,9 +117,9 @@ const T = {
     /* Landing — demo */
     demo_badge:   'Experimente',
     demo_tap:     'Toque em qualquer ponto',
-    demo_label1:  'Pássaros',
-    demo_label2:  'Cidade',
-    demo_label3:  'Vento',
+    demo_label1:  'Toc toc',
+    demo_label2:  'Tá ganhando, filho?',
+    demo_label3:  'filho...',
 
     /* Landing — how */
     how_title: 'Como funciona',
