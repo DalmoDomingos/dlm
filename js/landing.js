@@ -27,15 +27,38 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Animate demo pins on click
-document.querySelectorAll('.demo-pin').forEach(pin => {
-  pin.addEventListener('click', () => {
-    // Remove playing from all
-    document.querySelectorAll('.demo-pin--playing').forEach(p => p.classList.remove('demo-pin--playing'));
-    pin.classList.add('demo-pin--playing');
-    setTimeout(() => pin.classList.remove('demo-pin--playing'), 3000);
-  });
-});
+// Load demo DLM and make pins play real audio
+let demoCurrentAudio = null;
+
+async function loadDemoExample() {
+  try {
+    const res = await fetch('examples/tirinhadlm.dlm');
+    if (!res.ok) return;
+    const data = JSON.parse(await res.text());
+    if (data.format !== 'DLM') return;
+
+    const photo = document.getElementById('demoPhoto');
+    const img = photo.querySelector('.demo-img');
+    if (img) img.src = data.image;
+
+    const pins = photo.querySelectorAll('.demo-pin');
+    pins.forEach((pin, i) => {
+      const hs = data.hotspots[i];
+      if (!hs || !hs.audio) return;
+      pin.addEventListener('click', () => {
+        if (demoCurrentAudio) { demoCurrentAudio.pause(); demoCurrentAudio.currentTime = 0; }
+        document.querySelectorAll('.demo-pin--playing').forEach(p => p.classList.remove('demo-pin--playing'));
+        pin.classList.add('demo-pin--playing');
+        const audio = new Audio(hs.audio);
+        demoCurrentAudio = audio;
+        audio.play();
+        audio.onended = () => pin.classList.remove('demo-pin--playing');
+      });
+    });
+  } catch(e) {}
+}
+
+loadDemoExample();
 
 // Scroll-based fade-in for sections
 const observer = new IntersectionObserver((entries) => {
