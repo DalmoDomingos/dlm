@@ -265,6 +265,8 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   cursor: pointer;
+  width: 28px;
+  height: 28px;
 }
 
 .pin-ring {

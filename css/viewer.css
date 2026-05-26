@@ -170,6 +170,8 @@
   cursor: pointer;
   pointer-events: all;
   z-index: 5;
+  width: 30px;
+  height: 30px;
 }
 
 .vw-dot-ring {
