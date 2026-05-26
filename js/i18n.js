@@ -11,6 +11,7 @@ const T = {
     nav_try:    'Try Now',
 
     /* Landing — hero */
+    proof_text:   'Works on any device. No account needed.',
     hero_eyebrow: 'Introducing DLM',
     hero_h1a:     'Photos that',
     hero_h1b:     'speak.',
@@ -26,6 +27,7 @@ const T = {
     demo_label3:  'son...',
 
     /* Landing — how */
+    how_tag:   'Process',
     how_title: 'How it works',
     how_s1_t:  'Upload your photo',
     how_s1_d:  'Start with any image — JPEG, PNG or WebP. Landscape, portrait, anything.',
@@ -35,6 +37,7 @@ const T = {
     how_s3_d:  'Export your creation as a .dlm file. Share it, open it again, edit it anytime.',
 
     /* Landing — features */
+    feat_tag:   'Features',
     feat_title: 'Built for creators',
     feat_1_t:   'Live recording',
     feat_1_d:   'Capture audio right in the browser. No extra apps needed.',
@@ -50,6 +53,7 @@ const T = {
     feat_6_d:   'DLM files are readable JSON. Transparent, future-proof, yours forever.',
 
     /* Landing — cta */
+    cta_tag:   'Get started',
     cta_title: 'Ready to create?',
     cta_sub:   'Build your first Dynamic Layered Media file in seconds. No account, no install.',
     cta_btn:   'Open the Editor',
@@ -57,6 +61,7 @@ const T = {
 
     /* Footer */
     footer_name: 'Dynamic Layered Media',
+    footer_by:   'Created by',
     footer_copy: '© 2026 DLM. A new standard for interactive photography.',
 
     /* Editor */
@@ -107,6 +112,7 @@ const T = {
     nav_try:    'Experimente',
 
     /* Landing — hero */
+    proof_text:   'Funciona em qualquer dispositivo. Sem cadastro.',
     hero_eyebrow: 'Apresentando o DLM',
     hero_h1a:     'Fotos que',
     hero_h1b:     'falam.',
@@ -122,6 +128,7 @@ const T = {
     demo_label3:  'filho...',
 
     /* Landing — how */
+    how_tag:   'Processo',
     how_title: 'Como funciona',
     how_s1_t:  'Envie sua foto',
     how_s1_d:  'Comece com qualquer imagem — JPEG, PNG ou WebP. Paisagem, retrato, qualquer coisa.',
@@ -131,6 +138,7 @@ const T = {
     how_s3_d:  'Exporte como um arquivo .dlm. Compartilhe, abra novamente, edite quando quiser.',
 
     /* Landing — features */
+    feat_tag:   'Recursos',
     feat_title: 'Feito para criadores',
     feat_1_t:   'Gravação ao vivo',
     feat_1_d:   'Capture áudio direto no navegador. Sem aplicativos extras.',
@@ -146,6 +154,7 @@ const T = {
     feat_6_d:   'Arquivos DLM são JSON legível. Transparente, duradouro, sempre seus.',
 
     /* Landing — cta */
+    cta_tag:   'Começar',
     cta_title: 'Pronto para criar?',
     cta_sub:   'Crie seu primeiro arquivo de Mídia em Camadas Dinâmica em segundos. Sem cadastro, sem instalar nada.',
     cta_btn:   'Abrir o Editor',
@@ -153,6 +162,7 @@ const T = {
 
     /* Footer */
     footer_name: 'Dynamic Layered Media',
+    footer_by:   'Criado por',
     footer_copy: '© 2026 DLM. Um novo padrão para fotografia interativa.',
 
     /* Editor */
