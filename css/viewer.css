@@ -256,30 +256,34 @@
 /* Playing soundwave on dot */
 .vw-dot-wave {
   position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   gap: 2px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
+  z-index: 3;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .vw-dot.playing .vw-dot-wave { opacity: 1; }
+.vw-dot.playing .vw-dot-core svg { opacity: 0; }
 .vw-dot-wave span {
   display: block;
-  width: 3px;
-  background: var(--a2);
+  width: 2px;
+  background: white;
   border-radius: 2px;
-  transform-origin: bottom;
+  transform-origin: center;
   animation: wave-bar 0.55s ease-in-out infinite;
 }
-.vw-dot-wave span:nth-child(1) { height: 6px;  animation-delay: 0s; }
-.vw-dot-wave span:nth-child(2) { height: 14px; animation-delay: 0.1s; }
-.vw-dot-wave span:nth-child(3) { height: 20px; animation-delay: 0.2s; }
-.vw-dot-wave span:nth-child(4) { height: 14px; animation-delay: 0.3s; }
-.vw-dot-wave span:nth-child(5) { height: 8px;  animation-delay: 0.4s; }
+.vw-dot-wave span:nth-child(1) { height: 5px;  animation-delay: 0s; }
+.vw-dot-wave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+.vw-dot-wave span:nth-child(3) { height: 18px; animation-delay: 0.2s; }
+.vw-dot-wave span:nth-child(4) { height: 12px; animation-delay: 0.3s; }
+.vw-dot-wave span:nth-child(5) { height: 5px;  animation-delay: 0.4s; }
 
 /* ─── Viewer bar (bottom) ─── */
 .viewer-bar {

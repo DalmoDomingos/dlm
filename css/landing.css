@@ -326,32 +326,37 @@
 .pin-tooltip--visible,
 .demo-pin:hover .pin-tooltip { opacity: 1; }
 
+/* Wave inside the circle */
 .pin-wave {
   position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   gap: 2px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
+  z-index: 3;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .demo-pin--playing .pin-wave { opacity: 1; }
+.demo-pin--playing .pin-core svg { opacity: 0; }
 .pin-wave span {
   display: block;
-  width: 3px;
-  background: var(--a1);
+  width: 2px;
+  background: white;
   border-radius: 2px;
-  transform-origin: bottom;
+  transform-origin: center;
   animation: wave-bar 0.6s ease-in-out infinite;
 }
-.pin-wave span:nth-child(1) { height: 8px;  animation-delay: 0s; }
-.pin-wave span:nth-child(2) { height: 18px; animation-delay: 0.1s; }
-.pin-wave span:nth-child(3) { height: 24px; animation-delay: 0.2s; }
-.pin-wave span:nth-child(4) { height: 18px; animation-delay: 0.3s; }
-.pin-wave span:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+.pin-wave span:nth-child(1) { height: 5px;  animation-delay: 0s; }
+.pin-wave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+.pin-wave span:nth-child(3) { height: 16px; animation-delay: 0.2s; }
+.pin-wave span:nth-child(4) { height: 12px; animation-delay: 0.3s; }
+.pin-wave span:nth-child(5) { height: 5px;  animation-delay: 0.4s; }
 
 .demo-pin--playing .pin-core {
   background: linear-gradient(135deg, #FA6D8C, #7C6DFA);
